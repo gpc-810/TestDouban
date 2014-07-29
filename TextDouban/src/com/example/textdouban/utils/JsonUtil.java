@@ -11,6 +11,7 @@ import android.util.Log;
 
 import com.example.textdouban.bean.MovieBean;
 import com.example.textdouban.bean.PersonBean;
+import com.example.textdouban.bean.PersonDetailsBean;
 
 /**
  * json解析
@@ -47,7 +48,7 @@ public class JsonUtil {
 					String id = jsonItem.getString("id");
 
 					movieList.add(new MovieBean(name, String.valueOf(pingfen),
-							year, imageUrl, id,""));
+							year, imageUrl, id, ""));
 
 				}
 			}
@@ -62,66 +63,104 @@ public class JsonUtil {
 
 	/**
 	 * 电影信息解析
+	 * 
 	 * @param json
 	 * @param directorList
 	 * @param castsList
 	 * @param movieBean
-	 * return void
+	 *            return void
 	 */
 	public static void parseJsonMovie(String json,
 			ArrayList<PersonBean> directorList,
 			ArrayList<PersonBean> castsList, MovieBean movieBean) {
 
 		try {
-			JSONObject jsonObject=new JSONObject(json);
+			JSONObject jsonObject = new JSONObject(json);
 			JSONObject rating = jsonObject.getJSONObject("rating");// 评分
 			double pingfen = rating.getDouble("average");
 			movieBean.setAverage(String.valueOf(pingfen));
-			String year=jsonObject.getString("year");
+			String year = jsonObject.getString("year");
 			movieBean.setYear(year);
 			JSONObject images = jsonObject.getJSONObject("images");
 			String imageUrl = images.getString("small");
 			movieBean.setImageUrl(imageUrl);
-			String name=jsonObject.getString("title");//影片名字
+			String name = jsonObject.getString("title");// 影片名字
 			movieBean.setTitle(name);
-			String _id=jsonObject.getString("id");
+			String _id = jsonObject.getString("id");
 			movieBean.set_id(_id);
-			JSONArray genres=jsonObject.getJSONArray("genres");
-			String tag=genres.toString();
+			JSONArray genres = jsonObject.getJSONArray("genres");
+			String tag = genres.toString();
 			Log.d("tag=====", tag);
 			movieBean.setTag(tag);
-//			movieBean=new MovieBean(name, String.valueOf(pingfen), year, imageUrl, _id, tag);
-			JSONArray castsArray=jsonObject.getJSONArray("casts");
+			// movieBean=new MovieBean(name, String.valueOf(pingfen), year,
+			// imageUrl, _id, tag);
+			JSONArray castsArray = jsonObject.getJSONArray("casts");
 			for (int i = 0; i < castsArray.length(); i++) {
-				JSONObject jsonCastsItem=castsArray.getJSONObject(i);
-				JSONObject avatars=jsonCastsItem.getJSONObject("avatars");
-				String castsImgUrl=avatars.getString("small");
-				String castsName=jsonCastsItem.getString("name");
-				String id=jsonCastsItem.getString("id");
-				
+				JSONObject jsonCastsItem = castsArray.getJSONObject(i);
+				JSONObject avatars = jsonCastsItem.getJSONObject("avatars");
+				String castsImgUrl = avatars.getString("small");
+				String castsName = jsonCastsItem.getString("name");
+				String id = jsonCastsItem.getString("id");
+
 				castsList.add(new PersonBean(id, castsName, castsImgUrl));
-				
+
 			}
-			
-			JSONArray directorArray=jsonObject.getJSONArray("directors");
+
+			JSONArray directorArray = jsonObject.getJSONArray("directors");
 			for (int i = 0; i < directorArray.length(); i++) {
-				JSONObject jsonDirectorItem=directorArray.getJSONObject(i);
-				JSONObject avatars=jsonDirectorItem.getJSONObject("avatars");
-				String directorImgUrl=avatars.getString("small");
-				String directorName=jsonDirectorItem.getString("name");
-				String id=jsonDirectorItem.getString("id");
-				
-				directorList.add(new PersonBean(id, directorName, directorImgUrl));
-				
+				JSONObject jsonDirectorItem = directorArray.getJSONObject(i);
+				JSONObject avatars = jsonDirectorItem.getJSONObject("avatars");
+				String directorImgUrl = avatars.getString("small");
+				String directorName = jsonDirectorItem.getString("name");
+				String id = jsonDirectorItem.getString("id");
+
+				directorList.add(new PersonBean(id, directorName,
+						directorImgUrl));
+
 			}
-			
+
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		
-		
+
+	}
+
+	public static void parseJsonMoviePerson(String json,
+			ArrayList<PersonBean> workList, PersonDetailsBean personDetailsBean) {
+
+		try {
+			JSONObject jsonObject = new JSONObject(json);
+			String zh_name = jsonObject.getString("name");
+			personDetailsBean.setZh_name(zh_name);
+			String eg_name = jsonObject.getString("name_en");
+			personDetailsBean.setEg_name(eg_name);
+			String sex = jsonObject.getString("gender");
+			personDetailsBean.setSex(sex);
+			JSONObject avatars = jsonObject.getJSONObject("avatars");
+			String imgUrl = avatars.getString("small");
+			personDetailsBean.setImgUrl(imgUrl);
+			String adds = jsonObject.getString("born_place");
+			personDetailsBean.setAdds(adds);
+			String id = jsonObject.getString("id");
+			personDetailsBean.setId(id);
+
+			JSONArray jsonArray = jsonObject.getJSONArray("works");
+			for (int i = 0; i < jsonArray.length(); i++) {
+				JSONObject jsonWorks = jsonArray.getJSONObject(i);
+				JSONObject subject = jsonWorks.getJSONObject("subject");
+				JSONObject imgJson = subject.getJSONObject("images");
+				String WorkImgUrl = imgJson.getString("small");
+				String title = subject.getString("title");
+				String WorkId = subject.getString("id");
+				workList.add(new PersonBean(WorkId, title, WorkImgUrl));
+			}
+
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 	}
 
 }

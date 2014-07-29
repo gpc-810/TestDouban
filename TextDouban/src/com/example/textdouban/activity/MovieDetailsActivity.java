@@ -15,6 +15,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Message;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -46,6 +49,35 @@ public class MovieDetailsActivity extends BaseActivity {
 
 		getResponseData(101, url, params, "GET");
 		
+		//导演详情监听
+		mDirectorListView.setOnItemClickListener(new OnItemClickListener() {
+
+			@Override
+			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
+					long arg3) {
+				// TODO Auto-generated method stub
+				Intent intent=new Intent(MovieDetailsActivity.this, PersonDetailsActivity.class);
+				intent.putExtra("id", mDirectorList.get(arg2).getId());
+				startActivity(intent);
+			}
+		});
+		
+		//演员详情监听
+		mCastsListView.setOnItemClickListener(new OnItemClickListener() {
+
+			@Override
+			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
+					long arg3) {
+				// TODO Auto-generated method stub
+				Intent intent=new Intent(MovieDetailsActivity.this, PersonDetailsActivity.class);
+				intent.putExtra("id", mCastsList.get(arg2).getId());
+				startActivity(intent);
+			}
+		});
+		
+		
+		
+		
 	}
 
 	private void setin() {
@@ -61,6 +93,8 @@ public class MovieDetailsActivity extends BaseActivity {
 
 		mDirectorListView = (HorzontialListview) findViewById(R.id.director_listview);
 		mCastsListView = (HorzontialListview) findViewById(R.id.casts_listview);
+		
+		
 	}
 
 	@Override

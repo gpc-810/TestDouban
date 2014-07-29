@@ -3,11 +3,14 @@ package com.example.textdouban.adapter;
 import java.util.ArrayList;
 
 import com.example.textdouban.R;
+import com.example.textdouban.activity.PersonDetailsActivity;
 import com.example.textdouban.bean.PersonBean;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
@@ -59,8 +62,18 @@ public class PersonAdapter extends BaseAdapter {
 			holder = (ViewHolder) convertView.getTag();
 		}
 
-		PersonBean bean=personList.get(arg0);
+		final PersonBean bean=personList.get(arg0);
 		holder.name.setText(bean.getName());
+		holder.image.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View arg0) {
+				// TODO Auto-generated method stub
+				Intent intent=new Intent(context, PersonDetailsActivity.class);
+				intent.putExtra("id", bean.getId());
+				context.startActivity(intent);
+			}
+		});
 		
 		return convertView;
 	}
