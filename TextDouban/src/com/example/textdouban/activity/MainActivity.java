@@ -7,6 +7,7 @@ import com.example.textdouban.adapter.OneListAdapter;
 import com.example.textdouban.bean.MovieBean;
 import com.example.textdouban.net.ParametersDefault;
 import com.example.textdouban.utils.JsonUtil;
+import com.example.textdouban.utils.MyApplication;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -21,6 +22,11 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 
+/**
+ * 首次进入的搜索界面
+ * @author guopengchao  2014年7月29日 下午8:58:27
+ *
+ */
 public class MainActivity extends BaseActivity implements OnClickListener {
 
 	private EditText mSousuoText;
@@ -30,11 +36,12 @@ public class MainActivity extends BaseActivity implements OnClickListener {
 	private OneListAdapter mMovieAdapter;
 
 	private String url = "https://api.douban.com/v2/movie/search?";
-
+	private MyApplication myApp = MyApplication.getInstance();
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main_activity);
+		myApp.addActivity(this);
 		setin();
 		mMovieAdapter = new OneListAdapter(this, mMovieList);
 		mOneActivityList.setAdapter(mMovieAdapter);

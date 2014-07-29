@@ -15,6 +15,11 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+/**
+ * 图片，姓名 adapter
+ * @author guopengchao  2014年7月29日 下午8:58:47
+ *
+ */
 public class PersonAdapter extends BaseAdapter {
 
 	private Context context;
