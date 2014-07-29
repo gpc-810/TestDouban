@@ -7,6 +7,7 @@ import com.example.textdouban.adapter.PersonAdapter;
 import com.example.textdouban.bean.MovieBean;
 import com.example.textdouban.bean.PersonBean;
 import com.example.textdouban.bean.PersonDetailsBean;
+import com.example.textdouban.net.ImageLoad;
 import com.example.textdouban.net.ParametersDefault;
 import com.example.textdouban.utils.JsonUtil;
 import com.example.textdouban.view.HorzontialListview;
@@ -82,6 +83,7 @@ public class PersonDetailsActivity extends BaseActivity {
 		mDate.setText("出生日期" + personDetailsBean.getDate());
 		mAdds.setText("出生地" + personDetailsBean.getAdds());
 		mSex.setText(personDetailsBean.getSex());
+		ImageLoad.setImage(personDetailsBean.getImgUrl(), mImg);
 	}
 
 }

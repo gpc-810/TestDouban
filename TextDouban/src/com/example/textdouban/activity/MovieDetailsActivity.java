@@ -6,6 +6,7 @@ import com.example.textdouban.R;
 import com.example.textdouban.adapter.PersonAdapter;
 import com.example.textdouban.bean.MovieBean;
 import com.example.textdouban.bean.PersonBean;
+import com.example.textdouban.net.ImageLoad;
 import com.example.textdouban.net.ParametersDefault;
 import com.example.textdouban.utils.JsonUtil;
 import com.example.textdouban.view.HorzontialListview;
@@ -16,6 +17,7 @@ import android.os.Bundle;
 import android.os.Message;
 import android.util.Log;
 import android.view.View;
+import android.webkit.MimeTypeMap;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ImageView;
@@ -133,7 +135,8 @@ public class MovieDetailsActivity extends BaseActivity {
 		mMovieName.setText(bean.getTitle());
 		mMovieYear.setText(bean.getYear());
 		mMoviePingfen.setText(bean.getAverage()); 
-		mMovieTag.setText(bean.getTag());;
+		mMovieTag.setText(bean.getTag());
+		ImageLoad.setImage(bean.getImageUrl(), mMovieImage);;
 	}
 
 }

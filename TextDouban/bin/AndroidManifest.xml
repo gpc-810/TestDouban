@@ -36,6 +36,9 @@
         <activity 
             
             android:name="com.example.textdouban.activity.MovieDetailsActivity"></activity>
+        <activity 
+            
+            android:name="com.example.textdouban.activity.PersonDetailsActivity"></activity>
     </application>
 
 </manifest>

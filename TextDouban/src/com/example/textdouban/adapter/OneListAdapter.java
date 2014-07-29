@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import com.example.textdouban.R;
 import com.example.textdouban.bean.MovieBean;
+import com.example.textdouban.net.ImageLoad;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -69,6 +70,8 @@ public class OneListAdapter extends BaseAdapter {
 		holder.name.setText(bean.getTitle());
 		holder.year.setText(bean.getYear());
 		holder.pingfen.setText(bean.getAverage());
+
+		ImageLoad.setImage(bean.getImageUrl(), holder.image);
 
 		return convertView;
 	}
