@@ -4,5 +4,8 @@
     <string name="app_name">TextDouban</string>
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
+    <string name="sousuo">搜索</string>
+    <string name="go">GO</string>
+    
 
 </resources>
