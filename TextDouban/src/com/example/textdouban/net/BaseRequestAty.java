@@ -11,11 +11,9 @@ import com.example.textdouban.net.AsyncRunnerDefault;
 import com.example.textdouban.net.ParametersDefault;
 
 /**
- * 该类是针对“Activity类” 进行请求数据的基类
- * 
- * @author junhua
- * 
- *         游戏中心6 2014-5-22下午5:49:50
+ * baseAty
+ * @author guopengchao  2014年7月29日 下午1:53:24
+ *
  */
 public abstract class BaseRequestAty extends Activity implements
 		RequestListener {

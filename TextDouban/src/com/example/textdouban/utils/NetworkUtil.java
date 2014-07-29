@@ -9,8 +9,8 @@ import android.net.NetworkInfo;
 import android.provider.Settings;
 /**
  * 判断网络是否连接，成功连接返回true；
- * @author yunjunhua
- * @2014-3-2 下午8:16:11
+ * @author guopengchao  2014年7月29日 下午1:55:50
+ *
  */
 public class NetworkUtil {
 

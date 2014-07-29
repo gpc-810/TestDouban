@@ -5,10 +5,9 @@ import android.text.TextUtils;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 /**
- * 队请求的数据进行包装
- * @author junhua
- * 
- * 游戏中心6  2014-5-22下午5:41:54
+ * 对请求的数据进行包装
+ * @author guopengchao  2014年7月29日 下午1:54:07
+ *
  */
 public class ParametersDefault {
 

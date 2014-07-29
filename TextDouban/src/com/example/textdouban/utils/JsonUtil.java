@@ -10,8 +10,19 @@ import android.text.TextUtils;
 
 import com.example.textdouban.bean.MovieBean;
 
+/**
+ * json解析
+ * @author guopengchao  2014年7月29日 下午1:55:19
+ *
+ */
 public class JsonUtil {
 
+	/**
+	 * 搜索json解析
+	 * @param json
+	 * @return
+	 * return ArrayList<MovieBean>
+	 */
 	public static ArrayList<MovieBean> parseJsonSousuo(String json) {
 		
 
