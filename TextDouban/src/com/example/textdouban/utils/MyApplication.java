@@ -56,6 +56,7 @@ public class MyApplication extends Application {
 			for (int i = 1; i < activitys.size(); i++) {
 				Activity aty = (Activity) activitys.get(i);
 				aty.finish();
+				activitys.remove(i);
 			}
 		}
 
@@ -66,6 +67,7 @@ public class MyApplication extends Application {
 
 			Activity aty = (Activity) activitys.get(activitys.size() - 1);
 			aty.finish();
+			activitys.remove(activitys.size()-1);
 		}
 
 	}
