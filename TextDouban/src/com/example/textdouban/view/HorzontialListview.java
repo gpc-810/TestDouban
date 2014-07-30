@@ -85,7 +85,7 @@ public class HorzontialListview extends AdapterView<ListAdapter> {
 			// 在up时判断是否按下和松手的坐标为一个点
 			// 如果是一个点，将执行点击事件，这是我自己写的点击事件，而不是onclick
 			if (downP.x == curP.x && downP.y == curP.y) {
-				// onSingleTouch();
+				 onSingleTouch();
 				return true;
 			}
 		}

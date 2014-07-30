@@ -20,6 +20,7 @@
         android:layout_alignBottom="@+id/movie_message_img"
         android:layout_alignParentTop="true"
         android:layout_toRightOf="@+id/movie_message_img"
+        android:layout_marginLeft="10dp"
         android:orientation="vertical" >
 
         <TextView

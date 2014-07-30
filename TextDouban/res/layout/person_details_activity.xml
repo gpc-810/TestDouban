@@ -45,6 +45,7 @@
         android:layout_alignTop="@+id/person_details_img"
         android:layout_marginTop="16dp"
         android:layout_toRightOf="@+id/person_details_img"
+        android:layout_marginLeft="10dp"
         android:orientation="vertical" >
 
         <TextView
