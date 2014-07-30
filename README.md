@@ -1,5 +1,7 @@
 TestDouban
 ==========
+做的是第二个任务：完成度：一，二，三；
+
 首页：MainActivity，搜索电影
 电影详情界面：MovieDetailsActivity，有电影的信息（名字，年代，评分……），导演图片，导演名字，
 演员图片名字。
